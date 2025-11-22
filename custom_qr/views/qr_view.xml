@@ -1,0 +1,14 @@
+<!-- customer_qr_code/views/res_partner_views.xml -->
+<odoo>
+    <record id="view_partner_form_qr" model="ir.ui.view">
+        <field name="name">res.partner.form.qr</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet" position="inside">
+                <button name="generate_qr_code" type="object" string="Generate QR Code" class="btn-primary"/>
+                <field name="customer_qr_code" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,31 @@
+<odoo>
+
+    <record id="group_approval_restricted_user" model="res.groups">
+        <field name="name">Restricted Approval User</field>
+        <field name="comment">Users can only see records from the same department and area.</field>
+        <field name="category_id" ref="base.module_category_human_resources_approvals" />
+       
+    </record>
+
+    <record id="approvals.group_approval_user" model="res.groups">
+        <field name="implied_ids" eval="[(4,ref('group_approval_restricted_user'))]"/>
+    </record>
+
+
+
+    
+    <record id="approval_request_department_area_rule" model="ir.rule">
+        <field name="name">Approval Request: Same Department and Area</field>
+        <field name="model_id" ref="approvals.model_approval_request"/>
+        <field name="domain_force">[
+            '|',
+            ('create_uid', '=', user.id),
+            
+            ('department_id', '=', user.department_id.id),
+            ('area_id', '=', user.area_id.id)
+        ]</field>
+        <field name="groups" eval="[(4, ref('group_approval_restricted_user'))]"/>
+    </record>
+
+
+</odoo>

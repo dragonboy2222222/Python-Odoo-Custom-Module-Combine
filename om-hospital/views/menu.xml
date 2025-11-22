@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root menu -->
+    <menuitem id="menu_hospital_root"
+              name="HMS"/>
+
+    <!-- Submenu under the root menu -->
+    <menuitem id="menu_frontdesk"
+              name="Front Desk"
+              parent="menu_hospital_root"/>
+
+    <!-- Action linked to Patients -->
+    <menuitem id="menu_patients"
+              name="Patients"
+              parent="menu_frontdesk"
+              action="action_hospital_patient"/>
+</odoo>

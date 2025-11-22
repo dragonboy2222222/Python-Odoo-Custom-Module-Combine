@@ -1,0 +1,47 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <record id="action_res_area" model="ir.actions.act_window">
+        <field name="name">Res.Areas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.area</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="custom_approval_req.view_res_area_list"/>
+    </record>
+
+    <menuitem id="menu_res_area_main"
+        name="Res.Areas"
+        action="action_res_area"
+        parent="base.menu_users"
+        sequence="10" />
+
+
+    <record id="view_res_area_list" model="ir.ui.view">
+        <field name="name">res.area.view.list</field>
+        <field name="model">res.area</field>
+        <field name="arch" type="xml">
+            <list editable="bottom" string="Resource Areas">
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_res_area_form" model="ir.ui.view">
+        <field name="name">res.area.form</field>
+        <field name="model">res.area</field>
+        <field name="arch" type="xml">
+            <form string="Res Area">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    
+
+</odoo>

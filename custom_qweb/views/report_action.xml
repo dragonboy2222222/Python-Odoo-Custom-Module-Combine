@@ -1,0 +1,11 @@
+<odoo>
+    <record id="action_report_account_move" model="ir.actions.report">
+        <field name="name">Account Move Report</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">custom_qweb.custom_account_move_report_template</field>
+        <field name="report_file">custom_qweb.custom_account_move_report_template</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

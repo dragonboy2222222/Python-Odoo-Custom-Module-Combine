@@ -1,0 +1,14 @@
+<odoo>
+<record id="view_res_users_form_inherit" model="ir.ui.view">
+    <field name="name">res.users.form.inherit</field>
+    <field name="model">res.users</field>
+    <field name="inherit_id" ref="base.view_users_form" />
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='company_id']" position="after">
+            <field name="department_id" widget="many2many_tags" />
+            <field name="area_id" widget="many2many_tags" />
+        </xpath>
+    </field>
+</record>
+
+</odoo>

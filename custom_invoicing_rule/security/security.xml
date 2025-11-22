@@ -1,0 +1,101 @@
+<odoo>
+    <record id="group_invoice_custom_access" model="res.groups">
+        <field name="name">Custom Invoice Access</field>
+        <field name="category_id" ref="base.module_category_accounting_accounting"/>
+        <field name="implied_ids" eval="[(4, ref('account.group_account_invoice'))]"/>
+
+    </record>
+
+    <record id="account.group_account_invoice" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_invoice_custom_access'))]"/>
+    </record>
+
+
+
+
+    <record id="account.menu_finance_reports" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_manager'))]"/>
+    </record>
+
+    <record id="account.menu_action_move_in_refund_type" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_manager'))]"/>
+    </record>
+
+    <record id="account.menu_action_move_in_receipt_type" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_manager'))]"/>
+    </record>
+
+    <record id="account.menu_action_account_payments_payable" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_manager'))]"/>
+    </record>
+
+    <record id="account.product_product_menu_purchasable" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_manager'))]"/>
+    </record>
+
+    <record id="account.menu_account_supplier" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_manager'))]"/>
+    </record>
+
+    <record id="account.menu_action_move_out_refund_type" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_manager'))]"/>
+    </record>
+
+    <record id="account.menu_action_account_payments_receivable" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_manager'))]"/>
+    </record>
+
+    <record id="account.product_product_menu_sellable" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_manager'))]"/>
+    </record>
+
+    <record id="account.menu_account_customer" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_manager'))]"/>
+    </record>
+
+    <record id="account.menu_finance_entries" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_manager'))]"/>
+    </record>
+
+
+
+<!--    <record id="account_move_invoice_no_delete" model="ir.rule">-->
+<!--        <field name="name">No Delete Access to Invoices</field>-->
+<!--        <field name="model_id" ref="account.model_account_move"/>-->
+<!--        <field name="groups" eval="[(4, ref('group_invoice_custom_access'))]"/>-->
+<!--        <field name="domain_force">[('move_type', 'in', ('out_invoice', 'in_invoice'))]</field>-->
+<!--        <field name="perm_read" eval="1"/>-->
+<!--        <field name="perm_write" eval="1"/>-->
+<!--        <field name="perm_create" eval="1"/>-->
+<!--        <field name="perm_unlink" eval="0"/>-->
+<!--    </record>-->
+
+  <record id="account_move_no_delete_rule" model="ir.rule">
+    <field name="name">Restrict Delete for Custom Invoice Group</field>
+    <field name="model_id" ref="account.model_account_move"/> <!-- Replace with your model -->
+    <field name="domain_force">[('id', '!=', 0)]</field> <!-- Allow access to all records -->
+    <field name="groups" eval="[(4, ref('group_invoice_custom_access'))]"/>
+    <field name="perm_read" eval="1"/>
+    <field name="perm_write" eval="1"/>
+    <field name="perm_create" eval="1"/>
+    <field name="perm_unlink" eval="0"/>
+</record>
+
+
+
+
+    <!--    <record id="account_move_bill_no_delete" model="ir.rule">-->
+    <!--        <field name="name">No Delete Access to Bills</field>-->
+    <!--        <field name="model_id" ref="account.model_account_move"/>-->
+    <!--        <field name="groups" eval="[(4, ref('group_invoice_custom_access'))]"/>-->
+    <!--        <field name="domain_force">[('move_type', '=', 'in_invoice')]</field>-->
+    <!--        <field name="perm_read" eval="1"/>-->
+    <!--        <field name="perm_write" eval="1"/>-->
+    <!--        <field name="perm_create" eval="1"/>-->
+    <!--        <field name="perm_unlink" eval="0"/>-->
+    <!--    </record>-->
+
+
+
+
+</odoo>

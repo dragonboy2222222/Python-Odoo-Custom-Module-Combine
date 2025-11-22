@@ -1,0 +1,30 @@
+<odoo>
+    <record id="view_sale_order_cancel_reason_form" model="ir.ui.view">
+        <field name="name">sale.order.cancel.reason.form</field>
+        <field name="model">sale.order.cancel.reason</field>
+        <field name="arch" type="xml">
+            <form string="Cancel Reason" class="bg-light p-3 shadow-lg rounded">
+                <header>
+                    <h2 style="text-align: center; font-weight: bold; color: #ff6f61;">
+                        Please Provide a Reason for Cancellation
+                    </h2>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h3 style="margin-bottom: 1rem; color: #333;">
+                            Your feedback will help us improve!
+                        </h3>
+                    </div>
+                    <group>
+                        <field name="cancel_reason" widget="html" class="oe_inline bg-white p-2 rounded border"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Cancel Order" type="object" name="action_apply_cancel_reason"
+                        class="btn-primary oe_highlight" style="background-color: #ff6f61; border-color: #ff6f61;"/>
+                    <button string="Discard" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
